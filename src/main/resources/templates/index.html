@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kairova - Student Support Portal</title>
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #6f42c1 0%, #4e31aa 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)" /></svg>');
+            opacity: 0.5;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #6f42c1;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-feature {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #6f42c1;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5a32a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.25);
+        }
+        
+        .btn-outline-primary {
+            color: #6f42c1;
+            border-color: #6f42c1;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #6f42c1;
+            border-color: #6f42c1;
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            transform: translateY(-2px);
+        }
+        
+        .form-control, .form-range {
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d3e2;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #bac8f3;
+            box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .form-range::-webkit-slider-thumb {
+            background: var(--primary-color);
+        }
+        
+        .form-range::-moz-range-thumb {
+            background: var(--primary-color);
+        }
+        
+        .form-range::-ms-thumb {
+            background: var(--primary-color);
+        }
+        
+        .help-text {
+            font-size: 0.875rem;
+            color: #858796;
+            margin-top: 0.5rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+        
+        .page-header h1 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid #e3e6f0;
+        }
+        
+        .crisis-line {
+            background-color: #f8f9fc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+            border-left: 4px solid #e74a3b;
+        }
+        
+        .crisis-line strong {
+            color: #e74a3b;
+        }
+    </style>
+</head>
+<div layout:fragment="content">
+    <!-- Hero Section -->
+    <section class="hero-section text-center mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Welcome to Kairova</h1>
+                    <p class="lead mb-4">Your one-stop platform for academic success, career guidance, and mental well-being</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="/career" class="btn btn-light btn-lg btn-feature">
+                            <i class="bi bi-briefcase me-2"></i>Explore Careers
+                        </a>
+                        <a href="/collaborations" class="btn btn-outline-light btn-lg btn-feature">
+                            <i class="bi bi-people me-2"></i>Find Collaborators
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <div class="container">
+        <div class="row g-4 mb-5">
+            <!-- Career Guidance Card -->
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <h3>Career Guidance</h3>
+                        <p>Discover career paths that match your interests and skills. Get personalized advice and resources to help you achieve your professional goals.</p>
+                        <a href="https://roadmap.sh/" class="btn btn-primary btn-feature" target="_blank">Explore Careers</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Academic Collaboration Card -->
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3>Academic Collaboration</h3>
+                        <p>Connect with seniors and peers for group projects, study sessions, and knowledge sharing. Build your academic network and learn from others.</p>
+                        <a href="/collaborations" class="btn btn-primary btn-feature">Find Collaborators</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mental Health Assessment Card -->
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <h3>Mental Well-being</h3>
+                        <p>Take care of your mental health with our assessment tools and personalized advice. Your well-being is just as important as your academic success.</p>
+                        <a href="#mental-health" class="btn btn-primary btn-feature" data-bs-toggle="collapse">Assess Well-being</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mental Health Assessment Section -->
+        <div id="mental-health" class="collapse">
+            <div class="card mb-5">
+                <h1 class="m-0">Kairova</h1>
+            </div>
+            <h2 class="h4 text-muted fw-normal">Mental Health Assessment</h2>
+            <p class="lead mt-2">Take a moment to check in with yourself. Your mental health matters.</p>
+        </header>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-clipboard2-pulse me-2"></i>How are you feeling today?</h5>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/assess}" th:object="${assessment}" method="post" class="needs-validation" novalidate>
+            <!-- Feeling Input -->
+            <div class="mb-4">
+                <label for="feeling" class="form-label">How are you feeling today?</label>
+                <input type="text" class="form-control" id="feeling" name="feeling" 
+                       placeholder="e.g., stressed, anxious, happy, tired" required>
+                <div class="invalid-feedback">
+                    Please let us know how you're feeling.
+                </div>
+            </div>
+            
+            <!-- Stress Level -->
+            <div class="mb-4">
+                <label class="form-label">On a scale of 1 to 5, how would you rate your stress level today?</label>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>1 (Low)</span>
+                    <span>2</span>
+                    <span>3 (Moderate)</span>
+                    <span>4</span>
+                    <span>5 (Very High)</span>
+                </div>
+                <input type="range" class="form-range" min="1" max="5" id="stressLevel" name="stressLevel" required>
+            </div>
+            
+            <!-- Sleep Quality -->
+            <div class="mb-4">
+                <label class="form-label">Have you been sleeping well lately?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="sleepYes" name="sleepingWell" value="true" required>
+                    <label class="form-check-label" for="sleepYes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="sleepNo" name="sleepingWell" value="false">
+                    <label class="form-check-label" for="sleepNo">No</label>
+                </div>
+            </div>
+            
+            <!-- Concentration -->
+            <div class="mb-4">
+                <label class="form-label">Are you having trouble concentrating?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="concentrationYes" name="concentrationIssues" value="true" required>
+                    <label class="form-check-label" for="concentrationYes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="concentrationNo" name="concentrationIssues" value="false">
+                    <label class="form-check-label" for="concentrationNo">No</label>
+                </div>
+            </div>
+            
+            <!-- Socializing -->
+            <div class="mb-4">
+                <label class="form-label">Have you been socializing with friends or family?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="socialYes" name="socializing" value="true" required>
+                    <label class="form-check-label" for="socialYes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="socialNo" name="socializing" value="false">
+                    <label class="form-check-label" for="socialNo">No</label>
+                </div>
+            </div>
+            
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-arrow-right-circle me-2"></i>Get Personalized Advice
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="crisis-line mt-4">
+                    <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                    <strong>Need immediate help?</strong> Call or text the National Suicide Prevention Lifeline at 988
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        </div> <!-- End of container -->
+    
+    <footer class="footer mt-5 py-4 bg-light">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Kairova Student Support Portal. All rights reserved.</p>
+            <p class="small text-muted mt-2">This tool is not a substitute for professional advice. Always consult with qualified professionals for career, academic, or health-related matters.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form validation
+        (function () {
+            'use strict';
+            
+            // Fetch the form we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation');
+            
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+</body>
+</html>
